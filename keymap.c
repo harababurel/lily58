@@ -7,6 +7,14 @@ enum layer_number {
   _ADJUST,
 };
 
+enum custom_keycodes {
+  CTRL_TAB = SAFE_RANGE,
+  CTRL_SHIFT_TAB,
+};
+
+bool     ctrl_tab_active = false;
+uint16_t ctrl_tab_timer  = 0;
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* QWERTY
@@ -56,7 +64,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |   `  |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  |      |
+ * |   `  |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |CtlTab|CtShTb|   0  |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |-------.    ,-------| Left | Down |  Up  |Right |      |      |
  * |------+------+------+------+------+------|   [   |    |    ]  |------+------+------+------+------+------|
@@ -68,10 +76,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 
 [_RAISE] = LAYOUT(
-  _______, _______, _______, _______, _______, _______,                     _______, _______, _______, _______, _______, _______,
-  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                        KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______,
-  KC_F1,  KC_F2,    KC_F3,   KC_F4,   KC_F5,   KC_F6,                       KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX, XXXXXXX,
-  KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,   _______, _______,  KC_PLUS, KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS,
+  _______, _______, _______, _______, _______, _______,                     _______, _______, _______,        _______,  _______, _______,
+  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                        KC_6,    KC_7,    CTRL_SHIFT_TAB, CTRL_TAB,    KC_0, _______,
+  KC_F1,  KC_F2,    KC_F3,   KC_F4,   KC_F5,   KC_F6,                       KC_LEFT, KC_DOWN, KC_UP,          KC_RGHT,  XXXXXXX, XXXXXXX,
+  KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,   _______, _______,  KC_PLUS, KC_MINS, KC_EQL,         KC_LBRC,  KC_RBRC, KC_BSLS,
                              _______, _______, _______,  _______, _______,  _______, _______, _______
 ),
 /* ADJUST
@@ -139,11 +147,49 @@ bool oled_task_user(void) {
 #endif // OLED_ENABLE
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  if (record->event.pressed) {
 #ifdef OLED_ENABLE
+  if (record->event.pressed) {
     set_keylog(keycode, record);
-#endif
     // set_timelog();
   }
+#endif
+
+  switch (keycode) {
+      case CTRL_TAB:
+          if (record->event.pressed) {
+            if(!ctrl_tab_active) {
+              ctrl_tab_active=true;
+              register_code(KC_LCTRL);
+            }
+            ctrl_tab_timer = timer_read();
+            register_code(KC_TAB);
+          } else {
+            unregister_code(KC_TAB);
+          }
+          break;
+      case CTRL_SHIFT_TAB:
+          if (record->event.pressed) {
+            if(!ctrl_tab_active) {
+              ctrl_tab_active=true;
+              register_code(KC_LCTRL);
+            }
+            ctrl_tab_timer = timer_read();
+            register_code(KC_LSFT);
+            register_code(KC_TAB);
+          } else {
+            unregister_code(KC_TAB);
+            unregister_code(KC_LSFT);
+          }
+          break;
+  }
   return true;
+}
+
+void matrix_scan_user(void) {
+    if (ctrl_tab_active) {
+        if (timer_elapsed(ctrl_tab_timer) > 1000) {
+            unregister_code(KC_LCTRL);
+            ctrl_tab_active = false;
+        }
+    }
 }
