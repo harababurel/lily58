@@ -222,3 +222,4 @@ void matrix_scan_user(void) {
             ctrl_tab_active = false;
         }
     }
+}
