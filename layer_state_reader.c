@@ -1,6 +1,6 @@
 #include QMK_KEYBOARD_H
 #include <stdio.h>
-#include "lily58.h"
+// #include "lily58.h"
 
 #define L_QWERTY 0
 #define L_ALSO_QWERTY (1 << 0)

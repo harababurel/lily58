@@ -30,7 +30,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |LShift|   A  |   S  |   D  |   F  |   G  |-------.    ,-------|   H  |   J  |   K  |   L  |   ;  |  '   |
  * |------+------+------+------+------+------|   [   |    |    ]  |------+------+------+------+------+------|
- * |LCTRL |   Z  |   X  |   C  |   V  |   B  |-------|    |-------|   N  |   M  |   ,  |   .  |   /  |RShift|
+ * |LCTL  |   Z  |   X  |   C  |   V  |   B  |-------|    |-------|   N  |   M  |   ,  |   .  |   /  |RShift|
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *                   | LAlt | LGUI |LOWER | /Space  /       \Enter \  |RAISE |BackSP| RGUI |
  *                   |      |      |      |/       /         \      \ |      |      |      |
@@ -41,7 +41,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_ESC,    KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_GRV,
   KC_TAB,    KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_MINS,
   KC_LSFT,   KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                     KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-  KC_LCTRL,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, KC_LBRC,  KC_RBRC,  KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,  KC_RSFT,
+  KC_LCTL,   KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, KC_LBRC,  KC_RBRC,  KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,  KC_RSFT,
                         KC_LALT, KC_LGUI, MO(_LOWER), KC_SPC, KC_ENT, MO(_RAISE), KC_BSPC, KC_RGUI
 ),
 
@@ -53,7 +53,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |LShift|   A  |   R  |   S  |   T  |   G  |-------.    ,-------|   M  |   N  |   E  |   I  |   O  |  '   |
  * |------+------+------+------+------+------|   [   |    |    ]  |------+------+------+------+------+------|
- * |LCTRL |   Z  |   X  |   C  |   D  |   V  |-------|    |-------|   K  |   H  |   ,  |   .  |   /  |RShift|
+ * |LCTL  |   Z  |   X  |   C  |   D  |   V  |-------|    |-------|   K  |   H  |   ,  |   .  |   /  |RShift|
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *                   | LAlt | LGUI |LOWER | /Space  /       \Enter \  |RAISE |BackSP| RGUI |
  *                   |      |      |      |/       /         \      \ |      |      |      |
@@ -64,7 +64,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_ESC,    KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_GRV,
   KC_TAB,    KC_Q,   KC_W,    KC_F,    KC_P,    KC_B,                     KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_MINS,
   KC_LSFT,   KC_A,   KC_R,    KC_S,    KC_T,    KC_G,                     KC_M,    KC_N,    KC_E,    KC_I,    KC_O,    KC_QUOT,
-  KC_LCTRL,  KC_Z,   KC_X,    KC_C,    KC_D,    KC_V, KC_LBRC,  KC_RBRC,  KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
+  KC_LCTL,   KC_Z,   KC_X,    KC_C,    KC_D,    KC_V, KC_LBRC,  KC_RBRC,  KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
                         KC_LALT, KC_LGUI, MO(_LOWER), KC_SPC, KC_ENT, MO(_RAISE), KC_BSPC, KC_RGUI
 ),
 
@@ -95,7 +95,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |      |   [  |   7  |   8  |   9  |   ]  |                    |      |      |CtlTab|CtShTb|   0  | VOL- |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |   ;  |   4  |   5  |   6  |   =  |-------.    ,-------| Left | Down |  Up  |Right |      | MUTE |
+ * |      |   ;  |   4  |   5  |   6  |   =  |-------.    ,-------| Left | Down |  Up  |Right |KCMPLY| MUTE |
  * |------+------+------+------+------+------|   0   |    |    ]  |------+------+------+------+------+------|
  * |      |   `  |   1  |   2  |   3  |   \  |-------|    |-------|   +  |   -  |   =  |   [  |   ]  |   \  |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
@@ -107,7 +107,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_RAISE] = LAYOUT(
   _______, _______, _______, _______, _______, _______,                     _______, _______, _______,        WORKSPACE_L, WORKSPACE_R, KC_VOLU,
   _______, KC_LBRC,    KC_7,    KC_8,    KC_9, KC_RBRC,                     KC_6,    KC_7,    CTRL_SHIFT_TAB, CTRL_TAB,    KC_0,        KC_VOLD,
-  _______, KC_SCLN,    KC_4,    KC_5,    KC_6, KC_EQL,                      KC_LEFT, KC_DOWN, KC_UP,          KC_RGHT,     XXXXXXX,     KC_MUTE,
+  _______, KC_SCLN,    KC_4,    KC_5,    KC_6, KC_EQL,                      KC_LEFT, KC_DOWN, KC_UP,          KC_RGHT,     KC_MPLY,     KC_MUTE,
   _______, KC_GRV,     KC_1,    KC_2,    KC_3, KC_BSLS,  KC_0,    _______,  KC_PLUS, KC_MINS, KC_EQL,         KC_LBRC,     KC_RBRC,     KC_BSLS,
                              _______, _______, _______,  _______, _______,  _______, KC_DEL,  _______
 ),
@@ -197,7 +197,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           if (record->event.pressed) {
               if (!ctrl_tab_active) {
                   ctrl_tab_active = true;
-                  register_code(KC_LCTRL);
+                  register_code(KC_LCTL);
               }
               ctrl_tab_timer = timer_read();
               register_code(KC_TAB);
@@ -209,7 +209,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           if (record->event.pressed) {
               if (!ctrl_tab_active) {
                   ctrl_tab_active = true;
-                  register_code(KC_LCTRL);
+                  register_code(KC_LCTL);
               }
               ctrl_tab_timer = timer_read();
               register_code(KC_LSFT);
@@ -221,20 +221,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           break;
       case WORKSPACE_L:
           if (record->event.pressed) {
-              register_code(KC_LCTRL);
+              register_code(KC_LCTL);
               register_code(KC_LEFT);
           } else {
               unregister_code(KC_LEFT);
-              unregister_code(KC_LCTRL);
+              unregister_code(KC_LCTL);
           }
           break;
       case WORKSPACE_R:
           if (record->event.pressed) {
-              register_code(KC_LCTRL);
+              register_code(KC_LCTL);
               register_code(KC_RIGHT);
           } else {
               unregister_code(KC_RIGHT);
-              unregister_code(KC_LCTRL);
+              unregister_code(KC_LCTL);
           }
           break;
   }
@@ -244,7 +244,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 void matrix_scan_user(void) {
     if (ctrl_tab_active) {
         if (timer_elapsed(ctrl_tab_timer) > 1000) {
-            unregister_code(KC_LCTRL);
+            unregister_code(KC_LCTL);
             ctrl_tab_active = false;
         }
     }
